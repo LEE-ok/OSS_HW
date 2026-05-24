@@ -14,10 +14,17 @@ pip install -r requirements.txt
 ## 학습 실행
 
 ```bash
-python train.py
+# 베이스라인만 (1차 커밋과 동일 설정)
+python train.py --mode baseline
+
+# 하이퍼파라미터 비교 실험만
+python train.py --mode experiment
+
+# 베이스라인 평가 + 실험 후 최고 F1 모델 저장 (기본)
+python train.py --mode full
 ```
 
-학습 후 `models/wine_rf.pkl`에 파이프라인(스케일러 + RandomForest)이 저장됩니다.
+`--mode full` 실행 시 confusion matrix, classification report, 여러 `n_estimators`/`max_depth` 조합 비교표를 출력하고, test F1(macro)이 가장 높은 모델을 `models/wine_rf.pkl`에 저장합니다.
 
 ## 데이터셋
 
